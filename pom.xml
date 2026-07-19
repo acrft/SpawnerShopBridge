@@ -19,19 +19,38 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Before Paper 26.1 (1.21.11 and below), Paper's Maven version string format is
+             {MC_VERSION}-R0.1-SNAPSHOT. This is a real, published artifact - it just requires
+             snapshot resolution to be explicitly enabled on the repository below. -->
         <paper.version>1.21.2-R0.1-SNAPSHOT</paper.version>
+        <!-- VaultAPI version numbers only ever have 2 components (major.minor) and correspond to
+             the first 2 numbers of the Vault plugin version. 1.7 is the current published version;
+             there is no 1.7.3 release. -->
+        <vaultapi.version>1.7</vaultapi.version>
     </properties>
 
     <repositories>
-        <!-- PaperMC API -->
+        <!-- PaperMC API - hosts snapshot artifacts, which are not resolved by default. -->
         <repository>
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
-        <!-- Vault API (economy hook) -->
+        <!-- Vault API (economy hook), built on-demand from GitHub tags. -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -48,7 +67,7 @@
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
             <artifactId>VaultAPI</artifactId>
-            <version>1.7.3</version>
+            <version>${vaultapi.version}</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
