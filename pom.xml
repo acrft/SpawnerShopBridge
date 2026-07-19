@@ -12,7 +12,7 @@
     <name>SpawnerShopBridge</name>
     <description>
         Compatibility bridge that lets EconomyShopGUI recognize and buy/sell vanilla
-        mob spawners obtained via Silk Touch, on Paper 1.21.2.
+        mob spawners obtained via Silk Touch, on Paper 1.21.2/1.21.3 (build 26.1.2).
     </description>
 
     <properties>
@@ -20,9 +20,13 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Before Paper 26.1 (1.21.11 and below), Paper's Maven version string format is
-             {MC_VERSION}-R0.1-SNAPSHOT. This is a real, published artifact - it just requires
-             snapshot resolution to be explicitly enabled on the repository below. -->
-        <paper.version>1.21.2-R0.1-SNAPSHOT</paper.version>
+             {MC_VERSION}-R0.1-SNAPSHOT. Note: Mojang shipped 1.21.2 with a critical bug and
+             replaced it with 1.21.3 within days; both share the same protocol/data version, so
+             PaperMC never published a separate "1.21.2-R0.1-SNAPSHOT" artifact - their build for
+             this release line (what you're running as "build 26.1.2") is published only as
+             1.21.3-R0.1-SNAPSHOT. Verified against Paper's own snapshot repository listing and
+             the official PaperMC/Paper-archive README for this version branch. -->
+        <paper.version>1.21.3-R0.1-SNAPSHOT</paper.version>
         <!-- VaultAPI version numbers only ever have 2 components (major.minor) and correspond to
              the first 2 numbers of the Vault plugin version. 1.7 is the current published version;
              there is no 1.7.3 release. -->
