@@ -1,0 +1,29 @@
+name: SpawnerShopBridge
+version: '${project.version}'
+main: dev.spawnershopbridge.SpawnerShopBridge
+api-version: '1.21'
+author: SpawnerShopBridge
+description: >
+  Compatibility bridge that lets EconomyShopGUI recognize and buy/sell vanilla
+  mob spawners obtained via Silk Touch.
+
+# Vault is required for the fallback economy transaction.
+# EconomyShopGUI and RoseStacker are soft dependencies: SpawnerShopBridge
+# does not require either to be present to load, and never modifies them.
+depend: [Vault]
+softdepend: [EconomyShopGUI, RoseStacker]
+
+commands:
+  spawnershopbridge:
+    description: Administrative command for SpawnerShopBridge.
+    usage: /<command> reload
+    aliases: [ssb]
+    permission: spawnershopbridge.admin
+
+permissions:
+  spawnershopbridge.sell:
+    description: Allows selling vanilla spawners via /sell hand through SpawnerShopBridge.
+    default: true
+  spawnershopbridge.admin:
+    description: Allows reloading SpawnerShopBridge's configuration.
+    default: op

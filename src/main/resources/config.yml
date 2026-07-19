@@ -1,0 +1,28 @@
+# =========================================================
+# SpawnerShopBridge configuration
+# =========================================================
+
+# The folder name of EconomyShopGUI's plugin directory (inside /plugins),
+# used to auto-discover shop yml files so SpawnerShopBridge can read the
+# buy/sell prices you have already configured for spawners there.
+economyshopgui-folder: "EconomyShopGUI"
+
+# Subfolder inside the EconomyShopGUI folder that contains the shop
+# category yml files (e.g. plugins/EconomyShopGUI/shops/*.yml).
+shops-subfolder: "shops"
+
+# When true, SpawnerShopBridge listens for "/sell hand" and, if the player
+# is holding a vanilla spawner that EconomyShopGUI has a matching
+# "spawnertype" entry for, completes the sale itself (Vault deposit) and
+# cancels the original command so EconomyShopGUI never sees it.
+#
+# This is the fallback path described in the project requirements: it is
+# used because EconomyShopGUI's own spawner detection can fail to read
+# vanilla spawner NBT/component data depending on version/build.
+intercept-sell-hand: true
+
+# Messages
+messages:
+  sold: "&aSold &f%amount%x %mob% Spawner&a for &6%price%&a."
+  no-economy: "&cEconomy is not available. Please contact an administrator."
+  reload-success: "&aSpawnerShopBridge configuration reloaded. %count% spawner price entries loaded."
